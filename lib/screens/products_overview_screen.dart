@@ -52,10 +52,12 @@ class ProductsOverviewScreen extends StatelessWidget {
             crossAxisCount: 2,
             childAspectRatio: 3 / 2,
             crossAxisSpacing: 10,
-            mainAxisSpacing: 10),
+            mainAxisSpacing: 10,
+            mainAxisExtent: 150),
         itemBuilder: (ctx, index) => ProductItem(
             id: products[index].id,
             title: products[index].title,
+            price: products[index].price,
             imageUrl: products[index].imageUrl),
         itemCount: products.length,
       ),

@@ -3,10 +3,15 @@ import 'package:flutter/material.dart';
 class ProductItem extends StatelessWidget {
   final String id;
   final String title;
+  final double price;
   final String imageUrl;
 
   const ProductItem(
-      {Key? key, required this.id, required this.title, required this.imageUrl})
+      {Key? key,
+      required this.id,
+      required this.title,
+      required this.price,
+      required this.imageUrl})
       : super(key: key);
 
   @override
@@ -16,7 +21,7 @@ class ProductItem extends StatelessWidget {
       child: GridTile(
         child: Image.network(
           imageUrl,
-          fit: BoxFit.cover,
+          fit: BoxFit.fill,
         ),
         footer: GridTileBar(
           backgroundColor: Colors.black87,
@@ -28,7 +33,11 @@ class ProductItem extends StatelessWidget {
           title: Text(
             title,
             textAlign: TextAlign.center,
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+            ),
           ),
+          subtitle: Text('$price \$'),
           trailing: IconButton(
             icon: const Icon(Icons.shopping_cart),
             onPressed: () {},
