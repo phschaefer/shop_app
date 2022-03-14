@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shop_app/widgets/ProductsGrid.dart';
+import 'package:shop_app/widgets/badge.dart';
+
+import '../provider/cart.dart';
 
 enum SettingOptions {
   Favorites,
@@ -45,6 +49,17 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
                 value: SettingOptions.All,
               ),
             ],
+          ),
+          Consumer<Cart>(
+            builder: (_, cart, child) => Badge(
+                child: child,
+                value: cart.itemSize.toString(),
+                color: Theme.of(context).colorScheme.primary,
+            ),
+            child: IconButton(
+              icon: const Icon(Icons.shopping_cart),
+              onPressed: () {},
+            ),
           ),
         ],
       ),

@@ -15,10 +15,14 @@ class CartItem {
 }
 
 class Cart with ChangeNotifier {
-  late Map<String, CartItem> _items;
+  late final Map<String, CartItem> _items = {};
 
   Map<String, CartItem> get items {
     return {..._items};
+  }
+
+  int get itemSize {
+    return _items.length;
   }
 
   void addItem(
@@ -32,7 +36,7 @@ class Cart with ChangeNotifier {
         (existingCartItem) => CartItem(
           id: existingCartItem.id,
           title: existingCartItem.title,
-          quantity: existingCartItem.quantity,
+          quantity: existingCartItem.quantity + 1,
           price: existingCartItem.price,
         ),
       );
@@ -47,5 +51,6 @@ class Cart with ChangeNotifier {
         ),
       );
     }
+    notifyListeners();
   }
 }

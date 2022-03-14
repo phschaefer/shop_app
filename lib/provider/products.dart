@@ -4,8 +4,6 @@ import 'product.dart';
 
 class Products with ChangeNotifier{
 
-  Products({Key? key});
-
   List<Product> _items = [
     Product(
       id: 'p1',
